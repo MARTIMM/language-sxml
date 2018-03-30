@@ -1,0 +1,17 @@
+{
+  "name": "language-sxml",
+  "version": "0.0.1",
+  "description": "Semi-xml language support in the Atom editor",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MARTIMM/language-sxml.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MARTIMM/language-sxml.git/issues"
+  },
+  "license": "Artistic 2.0"
+}
