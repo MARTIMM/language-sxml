@@ -1,0 +1,24 @@
+'scopeName': 'source.sxml'
+'name': 'semi-xml'
+'fileTypes': [ 'sxml', 'semi-xml']
+
+'patterns': [
+  {
+    'match': '(\\b$!)([A-Za-z]\\w*\\.([a-zA-Z]\\w*))'
+    'captures:
+      '1':
+        'name': 'entity.start.method.sxml'
+      '2':
+        'name': 'entity.name.method.sxml'
+    'name': 'meta.method.sxml'
+  },
+  {
+    'match': '(\\b$)(([A-Za-z]\\w*)(\\:([a-zA-Z]\\w*))?)'
+    'captures':
+      '1':
+        'name': 'entity.start.element.sxml'
+      '2':
+        'name': 'entity.name.element.sxml'
+    'name': 'meta.element.sxml'
+  }
+]
