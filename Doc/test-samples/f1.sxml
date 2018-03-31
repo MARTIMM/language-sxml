@@ -1,0 +1,27 @@
+$test1 [
+  $t1 attr1=v1 [ ]
+  $t2 attr2="v 2" attr3='v 3' [ ]
+  $t3 attr4=<v1,v2,v3> [ ]
+
+  $t4 [ abc def ]
+  $t5 { abc def }
+  $t6 « abc def »
+
+  $!mod1.meth1 [ abc def ]
+
+
+  $t7 [
+    # comments in block type A
+    $t7a [ sub elements ]
+  ]
+
+  $t8 {
+    # comments in block type B
+    $t8a [ sub elements ]
+  }
+
+  $t9 «
+    # comments in block type C
+    $t9a [ sub elements ]
+  »
+]
