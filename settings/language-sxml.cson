@@ -1,0 +1,6 @@
+  core:
+    customFileTypes:
+      "source.sxml": [
+        "sxml"
+        "semi-xml"
+      ]
