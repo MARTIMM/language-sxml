@@ -11,21 +11,48 @@ patterns: [
     name: 'meta.method.sxml'
   }
   {
-    match: '\\$(?!\\!)'    # '(\\$)(([A-Za-z]\\w*)(\\:([a-zA-Z]\\w*))?)'
+    match: '\\$(?!\\!)' # '(\\$)(([A-Za-z]\\w*)(\\:([a-zA-Z]\\w*))?)'
     #captures:
     #  0: name: 'entity.start.element.sxml'
     #  1: name: 'entity.name.element.sxml'
     name: 'meta.element.sxml'
   }
   {
-    begin: '(?<!\\\\){'
-    end: '(?<!\\\\)}'
-    name: 'constant.block1.element.sxml'
+    begin: '(?<!\\\\)\\['
+    beginCaptures:
+      0: name: 'punctuation.block.begin.sxml'
+    end: '(?<!\\\\)\\]'
+    endCaptures:
+      0: name: 'punctuation.block.end.sxml'
+    contentName: 'constant.blockA.sxml'
+    patterns: [
+      {
+        include: '#commentLine'
+      }
+    ]
+  }
+  {
+    begin: '(?<!\\\\)\\{'
+    beginCaptures:
+      0: name: 'punctuation.block.begin.sxml'
+    end: '(?<!\\\\)\\}'
+    endCaptures:
+      0: name: 'punctuation.block.end.sxml'
+    contentName: 'constant.blockB.sxml'
+#    patterns: [
+#      {
+#        include: '#blockIndents'
+#      }
+#    ]
   }
   {
     begin: '(?<!\\\\)«'
+    beginCaptures:
+      0: name: 'punctuation.block.begin.sxml'
     end: '(?<!\\\\)»'
-    name: 'constant.block2.element.sxml'
+    endCaptures:
+      0: name: 'punctuation.block.end.sxml'
+    contentName: 'constant.blockC.sxml'
   }
 ]
 
@@ -44,4 +71,9 @@ repository:
     comment: 'Single line comments'
     match: '#.*$'
     name: 'comment.line.sxml'
+  }
+  blockIndents: {
+    comment: 'Color changes of indented lines in a block'
+    match: '^\s+'
+    name: 'constant.indent.sxml'
   }
