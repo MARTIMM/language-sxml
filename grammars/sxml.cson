@@ -3,57 +3,11 @@ name: 'Semi XML'
 fileTypes: [ 'sxml', 'semi-xml']
 
 patterns: [
-  {
-    match: '\\$\\!'  #'(\\$\\!)([A-Za-z]\\w*\\.([a-zA-Z]\\w*))'
-    #captures:
-    #  0: name: 'entity.start.method.sxml'
-    #  1: name: 'entity.name.method.sxml'
-    name: 'meta.method.sxml'
-  }
-  {
-    match: '\\$(?!\\!)' # '(\\$)(([A-Za-z]\\w*)(\\:([a-zA-Z]\\w*))?)'
-    #captures:
-    #  0: name: 'entity.start.element.sxml'
-    #  1: name: 'entity.name.element.sxml'
-    name: 'meta.element.sxml'
-  }
-  {
-    begin: '(?<!\\\\)\\['
-    beginCaptures:
-      0: name: 'punctuation.block.begin.sxml'
-    end: '(?<!\\\\)\\]'
-    endCaptures:
-      0: name: 'punctuation.block.end.sxml'
-    contentName: 'constant.blockA.sxml'
-    patterns: [
-      {
-        include: '#commentLine'
-      }
-    ]
-  }
-  {
-    begin: '(?<!\\\\)\\{'
-    beginCaptures:
-      0: name: 'punctuation.block.begin.sxml'
-    end: '(?<!\\\\)\\}'
-    endCaptures:
-      0: name: 'punctuation.block.end.sxml'
-    contentName: 'constant.blockB.sxml'
-#    patterns: [
-#      {
-#        include: '#blockIndents'
-#      }
-#    ]
-  }
-  {
-    begin: '(?<!\\\\)«'
-    beginCaptures:
-      0: name: 'punctuation.block.begin.sxml'
-    end: '(?<!\\\\)»'
-    endCaptures:
-      0: name: 'punctuation.block.end.sxml'
-    contentName: 'constant.blockC.sxml'
-  }
+  { include: '#element' }
+  { include: '#method' }
+  { include: '#blockAContent' }
+  { include: '#blockBContent' }
+  { include: '#blockCContent' }
 ]
 
 repository:
@@ -72,8 +26,99 @@ repository:
     match: '#.*$'
     name: 'comment.line.sxml'
   }
-  blockIndents: {
-    comment: 'Color changes of indented lines in a block'
-    match: '^\s+'
-    name: 'constant.indent.sxml'
+#  blockIndents: {
+#    comment: 'Color of indented lines in a block'
+#    match: '\n\s+'
+#    name: 'constant.indent.sxml'
+#  }
+  method: {
+    comment: 'Method tags'
+    patterns: [
+      {
+        match: '(\\$\\!)([A-Za-z]\\w*)\\.([a-zA-Z]\\w*)'
+        captures:
+          1: name: 'punctuation.method.begin.sxml'
+          2: name: 'variable.module.sxml'
+          3: name: 'variable.method.sxml'
+        #name: 'meta.method.sxml'
+      }
+    ]
+  }
+  element: {
+    comment: 'Element tags'
+    patterns: [
+      {
+        match: '(\\$)(([A-Za-z]\\w*)\\:)?([a-zA-Z]\\w*)'
+        captures:
+          1: name: 'punctuation.element.begin.sxml'
+          3: name: 'variable.namespace.sxml'
+          4: name: 'variable.element.sxml'
+        #name: 'meta.element.sxml'
+      }
+    ]
+  }
+  blockAContent: {
+    comment: 'BlockA content'
+    patterns: [
+      {
+        begin: '(?<!\\\\)\\['
+        beginCaptures:
+          0: name: 'punctuation.block.begin.sxml'
+        end: '(?<!\\\\)\\]'
+        endCaptures:
+          0: name: 'punctuation.block.end.sxml'
+        contentName: 'constant.blockA.sxml'
+        patterns: [
+          { include: '#commentLine' },
+          { include: '#blockAContent' }
+          { include: '#blockBContent' }
+          { include: '#blockCContent' }
+          { include: '#element' }
+          { include: '#method' }
+          { include: '#escape' }
+        ]
+      }
+    ]
+    name: 'variable.block.sxml'
+  }
+  blockBContent: {
+    comment: 'BlockB content'
+    patterns: [
+      {
+        begin: '(?<!\\\\)\\{'
+        beginCaptures:
+          0: name: 'punctuation.block.begin.sxml'
+        end: '(?<!\\\\)\\}'
+        endCaptures:
+          0: name: 'punctuation.block.end.sxml'
+        contentName: 'constant.blockB.sxml'
+        patterns: [
+#          { include: '#blockIndents' }
+          { include: '#escape' }
+        ]
+      }
+    ]
+  }
+  blockCContent: {
+    comment: 'BlockC content'
+    patterns: [
+      {
+        begin: '(?<!\\\\)«'
+        beginCaptures:
+          0: name: 'punctuation.block.begin.sxml'
+        end: '(?<!\\\\)»'
+        endCaptures:
+          0: name: 'punctuation.block.end.sxml'
+        contentName: 'constant.blockC.sxml'
+        patterns: [
+#          { include: '#blockIndents' }
+          { include: '#escape' }
+        ]
+      }
+    ]
+  }
+  escape: {
+    comment: 'bolding of escaped characters'
+    match: '\\\\.'
+    name: 'punctuation.escape.sxml'
   }

@@ -1,27 +1,41 @@
-$test1 [
+$test1 xmlns:abc=http://example.com/abc [
+
+  $a $b $c
+
   $t1 attr1=v1 [ ]
   $t2 attr2="v 2" attr3='v 3' [ ]
-  $t3 attr4=<v1,v2,v3> [ ]
+  $abc:x2 attr4=<v1,v2,v3> [ ]
+  $abc:x1 =v20 =!v30 { }
 
   $t4 [ abc def ]
   $t5 { abc def }
   $t6 « abc def »
 
-  $!mod1.meth1 [ abc def ]
+  $sxml:comment { bladiebla }
 
+  $!mod1.meth1 [ abc def ]
 
   $t7 [
     # comments in block type A
-    $t7a [ sub elements ]
+    $t7a [
+      $other:sub [ elements ]
+      $!mod2.meth2 {
+        some rubbish
+        and something more
+      }
+    ]
+    \]
   ]
 
-  $t8 {
-    # comments in block type B
-    $t8a [ sub elements ]
+  $t8 attr10=v10 =v20 =!v30 {
+    # no comments in block type B
+    $t8a [ no sub elements ]
+    \}
   }
 
   $t9 «
-    # comments in block type C
-    $t9a [ sub elements ]
+    # no comments in block type C
+    $t9a [ no sub elements ]
+    \»
   »
 ]
