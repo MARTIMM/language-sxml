@@ -13,15 +13,29 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 @elClr: #008ff0;
 @mmClr: #f08f00;
 
-@blckAbg: transparent; /* #ffffff; */
+@blckAbg: transparent;
 @blckBbg: #ffefff;
 @blckCbg: #ffefff;
-@blckClr: #0f0f0f;
+@blckAClr: #000000;
+@blckBClr: #aa7700;
+@blckCClr: #aa7700;
 
 @cmntClr: #3f3f3f;
 @cmntBg:  #fefefe;
 
-@escapeClr: #afafaf;
+@escapeClr: inherit;
+
+.syntax--variable.syntax--attr.syntax--key.syntax--sxml {
+  color: blue;
+}
+
+.syntax--punctuation.syntax--attr.syntax--sxml {
+  font-weight: bold;
+}
+
+.syntax--variable.syntax--attr.syntax--value.syntax--sxml {
+  color: green;
+}
 
 /* All about blocks */
 .syntax--punctuation.syntax--block.syntax--begin.syntax--sxml {
@@ -33,8 +47,8 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 }
 
 .syntax--punctuation.syntax--escape.syntax--sxml {
-  /*font-weight: bold;*/
-  color: @escapeClr;
+  font-weight: bold;
+  /*color: @escapeClr;*/
 }
 
 .syntax--comment.syntax--line.syntax--sxml {
@@ -58,18 +72,19 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 }
 */
 
+.syntax--constant.syntax--blockA.syntax--sxml {
+  /*background-color: @blckBbg;*/
+  color: @blckAClr;
+}
+
 .syntax--constant.syntax--blockB.syntax--sxml {
-  background-color: @blckBbg;
-  .leading-whitespace {
-    background-color: unset;
-  }
+  /*background-color: @blckBbg;*/
+  color: @blckBClr;
 }
 
 .syntax--constant.syntax--blockC.syntax--sxml {
-  background-color: @blckCbg;
-  .leading-whitespace {
-    background-color: unset;
-  }
+  /*background-color: @blckCbg;*/
+  color: @blckCClr;
 }
 
 /*
@@ -107,35 +122,3 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 .syntax--variable.syntax--element.syntax--sxml {
   color: @elClr;
 }
-
-/*
-.syntax--sxml {
-  .syntax--meta {
-    .syntax--method {
-      color: @mmClr;
-    }
-
-    .syntax--element {
-      color: @elClr;
-    }
-  }
-
-  .syntax--constant {
-    .syntax--blockA {
-//      background-color: @blckAbg;
-    }
-
-    .syntax--blockB {
-      background-color: @blckBbg;
-    }
-
-    .syntax--blockC {
-      background-color: @blckCbg;
-    }
-  }
-
-  .syntax--punctuation {
-    font-weight: bold;
-  }
-}
-*/

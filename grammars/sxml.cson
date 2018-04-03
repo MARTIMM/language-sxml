@@ -5,32 +5,100 @@ fileTypes: [ 'sxml', 'semi-xml']
 patterns: [
   { include: '#element' }
   { include: '#method' }
+  { include: '#attrT1' }
+  { include: '#attrT2' }
+  { include: '#attrT3' }
+  { include: '#attrT4' }
+  { include: '#attrT5' }
   { include: '#blockAContent' }
   { include: '#blockBContent' }
   { include: '#blockCContent' }
 ]
 
+
 repository:
-  elIdent: {
-    comment: 'Identifiers for element and namespace'
-    match: '[A-Za-z._-]\\w*'
-    name: 'variable.element.name.sxml'
+#  elIdent: {
+#    comment: 'Identifiers for element and namespace'
+#    match: '[A-Za-z._-]\\w*'
+#    name: 'variable.element.name.sxml'
+#  }
+#  p6Ident: {
+#    comment: 'Identifiers for perl6 objects'
+#    match: '[A-Za-z_]\\w*(\\-[A-Za-z_]\\w*)*'
+#    name: 'variable.perl6.name.sxml'
+#  }
+  attrKey: {
+    comment: 'Attribute key'
+    match: '([A-Za-z_][:\\w]*)(\\=)'
+    captures:
+      1: name: 'variable.attr.key.sxml'
+      2: name: 'punctuation.attr.sxml'
+#      3: name: 'variable.attr.value.sxml'
   }
-  p6Ident: {
-    comment: 'Identifiers for perl6 objects'
-    match: '[A-Za-z_]\\w*(\\-[A-Za-z_]\\w*)*'
-    name: 'variable.perl6.name.sxml'
+  attrT1: {
+    comment: 'Attribute type 1'
+    match: '(?\\=)(\\S+)'
+    captures:
+#      1: name: 'variable.attr.key.sxml'
+#      2: name: 'punctuation.attr.sxml'
+      2: name: 'variable.attr.value.sxml'
+  }
+  attrT2: {
+    comment: 'Attribute type 2'
+    begin: "(?\\=)\\'"
+    beginCaptures:
+#      1: name: 'variable.attr.key.sxml'
+#      2: name: 'punctuation.attr.sxml'
+    end: "\\'"
+    contentName: 'variable.attr.value.sxml'
+  }
+  attrT3: {
+    comment: 'Attribute type 3'
+    begin: '([A-Za-z_][:\\w]*)(\\=)\\"'
+    beginCaptures:
+      1: name: 'variable.attr.key.sxml'
+      2: name: 'punctuation.attr.sxml'
+    end: '\\"'
+    contentName: 'variable.attr.value.sxml'
+  }
+  attrT4: {
+    comment: 'Attribute type 4'
+    begin: '([A-Za-z_][:\\w]*)(\\=)\\<'
+    beginCaptures:
+      1: name: 'variable.attr.key.sxml'
+      2: name: 'punctuation.attr.sxml'
+    end: '\\>'
+    contentName: 'variable.attr.value.sxml'
+  }
+  attrT5: {
+    comment: 'Attribute type 5'
+    match: '(\\=)([A-Za-z_][:\\w]*)'
+    captures:
+      1: name: 'punctuation.attr.sxml'
+      2: name: 'variable.attr.value.sxml'
+  }
+  attrT6: {
+    comment: 'Attribute type 6'
+    match: '(\\=)\\!([A-Za-z_][:\\w]*)'
+    captures:
+      1: name: 'punctuation.attr.sxml'
+      2: name: 'variable.attr.value.sxml'
   }
   commentLine: {
     comment: 'Single line comments'
     match: '#.*$'
     name: 'comment.line.sxml'
   }
-#  blockIndents: {
-#    comment: 'Color of indented lines in a block'
-#    match: '\n\s+'
-#    name: 'constant.indent.sxml'
-#  }
+  blockBLines: {
+    comment: 'block B content'
+    match: '\\S(\\\\\\}|[^}])*$'
+    name: 'constant.blockB.sxml'
+  }
+  blockCLines: {
+    comment: 'block C content'
+    match: '\\S(\\\\»|[^»])*$'
+    name: 'constant.blockC.sxml'
+  }
   method: {
     comment: 'Method tags'
     patterns: [
@@ -76,6 +144,11 @@ repository:
           { include: '#element' }
           { include: '#method' }
           { include: '#escape' }
+          { include: '#attrT1' }
+          { include: '#attrT2' }
+          { include: '#attrT3' }
+          { include: '#attrT4' }
+          { include: '#attrT5' }
         ]
       }
     ]
@@ -93,7 +166,6 @@ repository:
           0: name: 'punctuation.block.end.sxml'
         contentName: 'constant.blockB.sxml'
         patterns: [
-#          { include: '#blockIndents' }
           { include: '#escape' }
         ]
       }
@@ -111,7 +183,6 @@ repository:
           0: name: 'punctuation.block.end.sxml'
         contentName: 'constant.blockC.sxml'
         patterns: [
-#          { include: '#blockIndents' }
           { include: '#escape' }
         ]
       }
@@ -119,6 +190,7 @@ repository:
   }
   escape: {
     comment: 'bolding of escaped characters'
-    match: '\\\\.'
-    name: 'punctuation.escape.sxml'
+    match: '(\\\\).'
+    captures:
+      1: name: 'punctuation.escape.sxml'
   }

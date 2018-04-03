@@ -5,7 +5,7 @@ $test1 xmlns:abc=http://example.com/abc [
   $t1 attr1=v1 [ ]
   $t2 attr2="v 2" attr3='v 3' [ ]
   $abc:x2 attr4=<v1,v2,v3> [ ]
-  $abc:x1 =v20 =!v30 { }
+  $abc:x1 =v20 =!v30 =sxml:inline { }
 
   $t4 [ abc def ]
   $t5 { abc def }
@@ -13,7 +13,7 @@ $test1 xmlns:abc=http://example.com/abc [
 
   $sxml:comment { bladiebla }
 
-  $!mod1.meth1 [ abc def ]
+  $!mod1.meth1 a=b [ abc def ]
 
   $t7 [
     # comments in block type A
@@ -30,12 +30,12 @@ $test1 xmlns:abc=http://example.com/abc [
   $t8 attr10=v10 =v20 =!v30 {
     # no comments in block type B
     $t8a [ no sub elements ]
-    \}
+    vc \} abc ABC
   }
 
   $t9 «
     # no comments in block type C
     $t9a [ no sub elements ]
-    \»
+    pqr \» tatar ata
   »
 ]
