@@ -5,11 +5,13 @@ fileTypes: [ 'sxml', 'semi-xml']
 patterns: [
   { include: '#element' }
   { include: '#method' }
-  { include: '#attrT1' }
+  { include: '#attrKey1' }
+  { include: '#attrKey2' }
+  { include: '#attrKey3' }
+#  { include: '#attrT1' }
   { include: '#attrT2' }
   { include: '#attrT3' }
-  { include: '#attrT4' }
-  { include: '#attrT5' }
+#  { include: '#attrT4' }
   { include: '#blockAContent' }
   { include: '#blockBContent' }
   { include: '#blockCContent' }
@@ -27,7 +29,7 @@ repository:
 #    match: '[A-Za-z_]\\w*(\\-[A-Za-z_]\\w*)*'
 #    name: 'variable.perl6.name.sxml'
 #  }
-  attrKey: {
+  attrKey1: {
     comment: 'Attribute key'
     match: '([A-Za-z_][:\\w]*)(\\=)'
     captures:
@@ -35,54 +37,45 @@ repository:
       2: name: 'punctuation.attr.sxml'
 #      3: name: 'variable.attr.value.sxml'
   }
-  attrT1: {
-    comment: 'Attribute type 1'
-    match: '(?\\=)(\\S+)'
-    captures:
-#      1: name: 'variable.attr.key.sxml'
-#      2: name: 'punctuation.attr.sxml'
-      2: name: 'variable.attr.value.sxml'
-  }
-  attrT2: {
-    comment: 'Attribute type 2'
-    begin: "(?\\=)\\'"
-    beginCaptures:
-#      1: name: 'variable.attr.key.sxml'
-#      2: name: 'punctuation.attr.sxml'
-    end: "\\'"
-    contentName: 'variable.attr.value.sxml'
-  }
-  attrT3: {
-    comment: 'Attribute type 3'
-    begin: '([A-Za-z_][:\\w]*)(\\=)\\"'
-    beginCaptures:
-      1: name: 'variable.attr.key.sxml'
-      2: name: 'punctuation.attr.sxml'
-    end: '\\"'
-    contentName: 'variable.attr.value.sxml'
-  }
-  attrT4: {
-    comment: 'Attribute type 4'
-    begin: '([A-Za-z_][:\\w]*)(\\=)\\<'
-    beginCaptures:
-      1: name: 'variable.attr.key.sxml'
-      2: name: 'punctuation.attr.sxml'
-    end: '\\>'
-    contentName: 'variable.attr.value.sxml'
-  }
-  attrT5: {
+  attrKey2: {
     comment: 'Attribute type 5'
     match: '(\\=)([A-Za-z_][:\\w]*)'
     captures:
       1: name: 'punctuation.attr.sxml'
       2: name: 'variable.attr.value.sxml'
   }
-  attrT6: {
+  attrKey3: {
     comment: 'Attribute type 6'
     match: '(\\=)\\!([A-Za-z_][:\\w]*)'
     captures:
       1: name: 'punctuation.attr.sxml'
       2: name: 'variable.attr.value.sxml'
+  }
+#  attrT1: {
+#    comment: 'Attribute type 1'
+#    match: '(?\\=)([^\\'\\"\\s]+)'
+#    captures:
+##      1: name: 'variable.attr.key.sxml'
+##      2: name: 'punctuation.attr.sxml'
+#      1: name: 'variable.attr.value.sxml'
+#  }
+  attrT2: {
+    comment: 'Attribute type 2'
+    begin: "(?\\=)'"
+    end: "'"
+#    contentName: 'variable.attr.value.sxml'
+  }
+  attrT3: {
+    comment: 'Attribute type 3'
+    begin: '(?\\=)"'
+    end: '"'
+#    contentName: 'variable.attr.value.sxml'
+  }
+  attrT4: {
+    comment: 'Attribute type 4'
+    begin: '(?\\=)<'
+    end: '>'
+    contentName: 'variable.attr.value.sxml'
   }
   commentLine: {
     comment: 'Single line comments'
@@ -144,11 +137,13 @@ repository:
           { include: '#element' }
           { include: '#method' }
           { include: '#escape' }
-          { include: '#attrT1' }
+          { include: '#attrKey1' }
+          { include: '#attrKey2' }
+          { include: '#attrKey3' }
+#          { include: '#attrT1' }
           { include: '#attrT2' }
           { include: '#attrT3' }
-          { include: '#attrT4' }
-          { include: '#attrT5' }
+#          { include: '#attrT4' }
         ]
       }
     ]
