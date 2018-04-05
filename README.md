@@ -1,6 +1,9 @@
 # Atom language for language Semi XML
 
+Highlighting the Semi-XML language from the perl6 module SemiXML found [here][repo]. At the moment a styles file is used which unfortunately will not work well with all themes but works on the light kind of themes in atom. In the near future I will try to make this better for all themes.
+
 <!-- references -->
+[repo]: https://github.com/MARTIMM/Semi-xml
 [atomgramm1]: https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
 [atomgramm2]: https://gist.github.com/Aerijo/b8c82d647db783187804e86fa0a604a1#style-guide
 [atomregex1]: https://github.com/kkos/oniguruma/blob/master/doc/RE
