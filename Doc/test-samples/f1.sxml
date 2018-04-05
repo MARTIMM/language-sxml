@@ -2,6 +2,9 @@ $test1 xmlns:abc=http://example.com/abc [
 
   $a $b $c
 
+  # No attribute values
+  'hgvhgv' "jgsjdj" <hg,jhg,hghf>
+
   $t1 attr1=v1 [ ]
   $t2 attr2="v 2" attr3='v 3' [ ]
   $abc:x2 attr4=<v1,v2,v3> [ ]
@@ -9,7 +12,7 @@ $test1 xmlns:abc=http://example.com/abc [
 
   $t4 [ abc def ]
   $t5 { abc def }
-  $t6 « abc def »
+  $t6 « abc def  'jhgjhg' »
 
   $sxml:comment { bladiebla }
 

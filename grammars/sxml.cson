@@ -8,10 +8,10 @@ patterns: [
   { include: '#attrKey1' }
   { include: '#attrKey2' }
   { include: '#attrKey3' }
-#  { include: '#attrT1' }
   { include: '#attrT2' }
   { include: '#attrT3' }
-#  { include: '#attrT4' }
+  { include: '#attrT4' }
+  { include: '#attrT1' }
   { include: '#blockAContent' }
   { include: '#blockBContent' }
   { include: '#blockCContent' }
@@ -51,29 +51,29 @@ repository:
       1: name: 'punctuation.attr.sxml'
       2: name: 'variable.attr.value.sxml'
   }
-#  attrT1: {
-#    comment: 'Attribute type 1'
-#    match: '(?\\=)([^\\'\\"\\s]+)'
-#    captures:
-##      1: name: 'variable.attr.key.sxml'
-##      2: name: 'punctuation.attr.sxml'
-#      1: name: 'variable.attr.value.sxml'
-#  }
+  attrT1: {
+    comment: 'Attribute type 1'
+    match: '(?<=\\=)(\\S+)'
+    captures:
+#      1: name: 'variable.attr.key.sxml'
+#      2: name: 'punctuation.attr.sxml'
+      1: name: 'variable.attr.value.sxml'
+  }
   attrT2: {
     comment: 'Attribute type 2'
-    begin: "(?\\=)'"
+    begin: "(?<=\\=)'"
     end: "'"
-#    contentName: 'variable.attr.value.sxml'
+    contentName: 'variable.attr.value.sxml'
   }
   attrT3: {
     comment: 'Attribute type 3'
-    begin: '(?\\=)"'
+    begin: '(?<=\\=)"'
     end: '"'
-#    contentName: 'variable.attr.value.sxml'
+    contentName: 'variable.attr.value.sxml'
   }
   attrT4: {
     comment: 'Attribute type 4'
-    begin: '(?\\=)<'
+    begin: '(?<=\\=)<'
     end: '>'
     contentName: 'variable.attr.value.sxml'
   }
@@ -140,10 +140,10 @@ repository:
           { include: '#attrKey1' }
           { include: '#attrKey2' }
           { include: '#attrKey3' }
-#          { include: '#attrT1' }
           { include: '#attrT2' }
           { include: '#attrT3' }
-#          { include: '#attrT4' }
+          { include: '#attrT4' }
+          { include: '#attrT1' }
         ]
       }
     ]
