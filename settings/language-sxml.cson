@@ -1,3 +1,10 @@
-core:
+".source.sxml":
   customFileTypes:
     "source.sxml": [ "sxml", "semi-xml" ]
+
+  editor:
+    foldBeginPattern: 'NEVERFOLD'
+    foldEndPattern: 'NEVERFOLD'
+    increaseIndentPattern: '(?!<=\\\\)\\[|(?!<=\\\\)\\{|(?!<=\\\\)\\«'
+    decreaseIndentPattern: '(?!<=\\\\)\\]|(?!<=\\\\)\\}|(?!<=\\\\)\\»'
+    nonWordCharacters: '/\\()":,.;<>~#^*|+=[]{}`?!«»'
