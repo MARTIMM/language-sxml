@@ -1,6 +1,7 @@
 $test1 xmlns:abc=http://example.com/abc [
 
   $a $b $c
+  an entity &circ; and another &copy;
 
   # No attribute values
   'hgvhgv' "jgsjdj" <hg,jhg,hghf>
@@ -34,11 +35,13 @@ $test1 xmlns:abc=http://example.com/abc [
     # no comments in block type B
     $t8a [ no sub elements ]
     vc \} abc ABC
+    between text only brackets; an entity &circ; and another &copy;
   }
 
   $t9 «
     # no comments in block type C
     $t9a [ no sub elements ]
     pqr \» tatar ata
+    between text only brackets; an entity &circ; and another &copy;
   »
 ]

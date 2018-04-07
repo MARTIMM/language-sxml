@@ -15,6 +15,7 @@ patterns: [
   { include: '#blockAContent' }
   { include: '#blockBContent' }
   { include: '#blockCContent' }
+  { include: '#xmlEntity' }
 ]
 
 
@@ -76,6 +77,11 @@ repository:
     begin: '(?<=\\=)<'
     end: '>'
     contentName: 'variable.attr.value.sxml'
+  }
+  xmlEntity: {
+    comment: 'XML Entities'
+    match: '\\&[^;\\s]+\\;'
+    name: 'variable.entity.sxml'
   }
   commentLine: {
     comment: 'Single line comments'
@@ -144,6 +150,7 @@ repository:
           { include: '#attrT3' }
           { include: '#attrT4' }
           { include: '#attrT1' }
+          { include: '#xmlEntity' }
         ]
       }
     ]
@@ -162,6 +169,7 @@ repository:
         contentName: 'constant.blockB.sxml'
         patterns: [
           { include: '#escape' }
+          { include: '#xmlEntity' }
         ]
       }
     ]
@@ -179,6 +187,7 @@ repository:
         contentName: 'constant.blockC.sxml'
         patterns: [
           { include: '#escape' }
+          { include: '#xmlEntity' }
         ]
       }
     ]

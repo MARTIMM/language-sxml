@@ -24,6 +24,7 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 @cmntBg:  #fefefe;
 
 @escapeClr: inherit;
+@entityClr: #ba0043;
 
 .syntax--variable.syntax--attr.syntax--key.syntax--sxml {
   color: blue;
@@ -54,6 +55,10 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 .syntax--comment.syntax--line.syntax--sxml {
   color: @cmntClr;
   /*background-color: @cmntBg;*/
+}
+
+.syntax--variable.syntax--entity.syntax--sxml {
+  color: @entityClr;
 }
 
 /*
