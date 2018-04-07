@@ -9,6 +9,16 @@ atom-text-editor.editor .syntax--source.syntax--sxml
   -webkit-font-feature-settings: "liga" off, "calt" off;
 }
 
+.editor, atom-text-editor::shadow {
+  .bracket-matcher {
+    // style settings go here
+    //z-index: 1;
+    border-bottom: 1px solid lime;
+    position: absolute;
+    border: 1px solid rgba(0, 255, 0, 0.7);
+    background-color: rgba(0, 255, 0, 0.3);
+  }
+}
 
 @elClr: #008ff0;
 @mmClr: #f08f00;
