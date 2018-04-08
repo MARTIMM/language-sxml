@@ -38,7 +38,6 @@ $test1 xmlns:abc=http://example.com/abc [
     between text only brackets; an entity &circ; and another &copy;
   }
 
-
   $t9 «
     # no comments in block type C
     $t9a [ no sub elements ]

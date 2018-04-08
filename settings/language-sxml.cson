@@ -5,6 +5,12 @@
   editor:
     foldBeginPattern: 'NEVERFOLD'
     foldEndPattern: 'NEVERFOLD'
+    nonWordCharacters: '/\\()":,.;<>~#^*|+=[]{}`?!«»'
+
+    # defined by bracket-matcher
     increaseIndentPattern: '(?!<=\\\\)\\[|(?!<=\\\\)\\{|(?!<=\\\\)\\«'
     decreaseIndentPattern: '(?!<=\\\\)\\]|(?!<=\\\\)\\}|(?!<=\\\\)\\»'
-    nonWordCharacters: '/\\()":,.;<>~#^*|+=[]{}`?!«»'
+
+  # defined by bracket-matcher
+  "bracket-matcher":
+    autocompleteCharacters: [ "[]", "{}", "«»", "\"\"", "''", "<>"]
