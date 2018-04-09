@@ -103,10 +103,25 @@ repository:
     patterns: [
       {
         match: '(\\$\\!)([A-Za-z]\\w*)\\.([a-zA-Z]\\w*)'
+        #match: '(\\$\\!)([A-Za-z]+)(\\.)([a-zA-Z]\\w*)'
+        #match: '(\\$\\!)([A-Za-z_\\-]+)(\\.)([a-zA-Z_][\\w_\\-]*)'
+        #match: '''
+        #  (\\$\\!)                    # Start with '$!'
+        #  ([\\p{Alpha}\\p{Digit}_-]+) # Labels are alphanumeric text, '_' or '-'
+        #  (\\.)                       # Separate with a '.'
+        #  (?:[\\p{Alpha}_]            # perl6 method is a p6 id
+        #    (?:
+        #      [\\p{Digit}\\p{Alpha}_]
+        #    |
+        #      [\\-\'] [\\p{Digit}\\p{Alpha}_]
+        #    )*
+        #  )
+        #'''
         captures:
           1: name: 'punctuation.method.begin.sxml'
           2: name: 'variable.module.sxml'
-          3: name: 'variable.method.sxml'
+          3: name: 'punctuation.method.separator.sxml'
+          4: name: 'variable.method.sxml'
         #name: 'meta.method.sxml'
       }
     ]
@@ -196,5 +211,5 @@ repository:
     comment: 'bolding of escaped characters'
     match: '(\\\\).'
     captures:
-      1: name: 'punctuation.escape.sxml'
+      1: name: 'constant.character.escape.sxml'
   }

@@ -3,8 +3,8 @@
     "source.sxml": [ "sxml", "semi-xml" ]
 
   editor:
-    foldBeginPattern: 'NEVERFOLD'
-    foldEndPattern: 'NEVERFOLD'
+    foldBeginPattern: '("NEVERFOLD")'
+    foldEndPattern: '("NEVERFOLD")'
     nonWordCharacters: '/\\()":,.;<>~#^*|+=[]{}`?!«»'
 
     # defined by bracket-matcher
