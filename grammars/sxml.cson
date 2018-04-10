@@ -21,31 +21,16 @@ patterns: [
 
 
 repository:
-#  elIdent: {
-#    comment: 'Identifiers for element and namespace'
-#    match: '[A-Za-z._-]\\w*'
-#    name: 'variable.element.name.sxml'
-#  }
-#  p6Ident: {
-#    comment: 'Identifiers for perl6 objects'
-#    match: '[A-Za-z_]\\w*(\\-[A-Za-z_]\\w*)*'
-#    name: 'variable.perl6.name.sxml'
-#  }
   attrKey1: {
     comment: 'Attribute start: key='
     match: '([A-Za-z_][:\\w]*)(\\=)'
     captures:
       1: name: 'variable.attr.key.sxml'
       2: name: 'punctuation.attr.sxml'
-#      3: name: 'variable.attr.value.sxml'
   }
   attrT1: {
     comment: 'Attribute: key=value'
     match: '(?<=\\S\\=)(\\S+)'
-#    captures:
-#      1: name: 'variable.attr.key.sxml'
-#      2: name: 'punctuation.attr.sxml'
-#      1: name: 'variable.attr.value.sxml'
     name: 'variable.attr.value.sxml'
   }
   attrT2: {
@@ -107,32 +92,22 @@ repository:
     patterns: [
       {
         match: '''(?x)
-          (\\$\\!)                     # Start with '$!'
-          #([A-Za-z]\\w*)
+          (\\$\\!)                    # Start with '$!'
           ([\\p{Alpha}\\p{Digit}_-]+) # Labels are alphanumeric text, '_' or '-'
-          (\\.)
-          ([a-zA-Z]\\w*)
+          (\\.)                       # Separate with a '.'
+          ([\\p{Alpha}_]              # perl6 method is a p6 id
+            (
+              [\\p{Digit}\\p{Alpha}_]
+            |
+              [\\-\'] [\\p{Alpha}_]
+            )*
+          )
         '''
-        #match: '(\\$\\!)([A-Za-z]+)(\\.)([a-zA-Z]\\w*)'
-        #match: '(\\$\\!)([A-Za-z_\\-]+)(\\.)([a-zA-Z_][\\w_\\-]*)'
-        #match: '''
-        #  (\\$\\!)                    # Start with '$!'
-        #  ([\\p{Alpha}\\p{Digit}_-]+) # Labels are alphanumeric text, '_' or '-'
-        #  (\\.)                       # Separate with a '.'
-        #  (?:[\\p{Alpha}_]            # perl6 method is a p6 id
-        #    (?:
-        #      [\\p{Digit}\\p{Alpha}_]
-        #    |
-        #      [\\-\'] [\\p{Digit}\\p{Alpha}_]
-        #    )*
-        #  )
-        #'''
         captures:
           1: name: 'punctuation.method.begin.sxml'
           2: name: 'variable.module.sxml'
           3: name: 'punctuation.method.separator.sxml'
           4: name: 'variable.method.sxml'
-        #name: 'meta.method.sxml'
       }
     ]
   }
@@ -145,7 +120,6 @@ repository:
           1: name: 'punctuation.element.begin.sxml'
           3: name: 'variable.namespace.sxml'
           4: name: 'variable.element.sxml'
-        #name: 'meta.element.sxml'
       }
     ]
   }
