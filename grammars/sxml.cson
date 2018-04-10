@@ -16,6 +16,7 @@ patterns: [
   { include: '#blockBContent' }
   { include: '#blockCContent' }
   { include: '#xmlEntity' }
+  { include: '#commentLine' },
 ]
 
 
@@ -31,52 +32,53 @@ repository:
 #    name: 'variable.perl6.name.sxml'
 #  }
   attrKey1: {
-    comment: 'Attribute key'
+    comment: 'Attribute start: key='
     match: '([A-Za-z_][:\\w]*)(\\=)'
     captures:
       1: name: 'variable.attr.key.sxml'
       2: name: 'punctuation.attr.sxml'
 #      3: name: 'variable.attr.value.sxml'
   }
-  attrKey2: {
-    comment: 'Attribute type 5'
-    match: '(\\=)([A-Za-z_][:\\w]*)'
-    captures:
-      1: name: 'punctuation.attr.sxml'
-      2: name: 'variable.attr.value.sxml'
-  }
-  attrKey3: {
-    comment: 'Attribute type 6'
-    match: '(\\=)\\!([A-Za-z_][:\\w]*)'
-    captures:
-      1: name: 'punctuation.attr.sxml'
-      2: name: 'variable.attr.value.sxml'
-  }
   attrT1: {
-    comment: 'Attribute type 1'
-    match: '(?<=\\=)(\\S+)'
-    captures:
+    comment: 'Attribute: key=value'
+    match: '(?<=\\S\\=)(\\S+)'
+#    captures:
 #      1: name: 'variable.attr.key.sxml'
 #      2: name: 'punctuation.attr.sxml'
-      1: name: 'variable.attr.value.sxml'
+#      1: name: 'variable.attr.value.sxml'
+    name: 'variable.attr.value.sxml'
   }
   attrT2: {
-    comment: 'Attribute type 2'
-    begin: "(?<=\\=)'"
+    comment: "Attribute: key='value'"
+    begin: "(?<=\\S\\=)'"
     end: "'"
     contentName: 'variable.attr.value.sxml'
   }
   attrT3: {
-    comment: 'Attribute type 3'
-    begin: '(?<=\\=)"'
+    comment: 'Attribute: key="value"'
+    begin: '(?<=\\S\\=)"'
     end: '"'
     contentName: 'variable.attr.value.sxml'
   }
   attrT4: {
-    comment: 'Attribute type 4'
-    begin: '(?<=\\=)<'
+    comment: 'Attribute: key=<values>'
+    begin: '(?<=\\S\\=)<'
     end: '>'
     contentName: 'variable.attr.value.sxml'
+  }
+  attrKey2: {
+    comment: 'Boolean attribute: =key'
+    match: '(?<=\\s)(\\=)([A-Za-z_][:\\w]*)'
+    captures:
+      1: name: 'punctuation.attr.sxml'
+      2: name: 'variable.attr.key.sxml'
+  }
+  attrKey3: {
+    comment: 'Boolean attribute: =!key'
+    match: '(?<=\\s)(\\=\\!)([A-Za-z_][:\\w]*)'
+    captures:
+      1: name: 'punctuation.attr.sxml'
+      2: name: 'variable.attr.key.sxml'
   }
   xmlEntity: {
     comment: 'XML Entities'
@@ -85,8 +87,10 @@ repository:
   }
   commentLine: {
     comment: 'Single line comments'
-    match: '#.*$'
-    name: 'comment.line.sxml'
+    match: '(#\\s+)(.*)$'
+    captures:
+      1: name: 'comment.begin.sxml'
+      2: name: 'comment.line.sxml'
   }
   blockBLines: {
     comment: 'block B content'
@@ -102,7 +106,13 @@ repository:
     comment: 'Method tags'
     patterns: [
       {
-        match: '(\\$\\!)([A-Za-z]\\w*)\\.([a-zA-Z]\\w*)'
+        match: '''(?x)
+          (\\$\\!)                     # Start with '$!'
+          #([A-Za-z]\\w*)
+          ([\\p{Alpha}\\p{Digit}_-]+) # Labels are alphanumeric text, '_' or '-'
+          (\\.)
+          ([a-zA-Z]\\w*)
+        '''
         #match: '(\\$\\!)([A-Za-z]+)(\\.)([a-zA-Z]\\w*)'
         #match: '(\\$\\!)([A-Za-z_\\-]+)(\\.)([a-zA-Z_][\\w_\\-]*)'
         #match: '''

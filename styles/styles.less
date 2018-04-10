@@ -27,18 +27,24 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 @blckAbg: transparent;
 @blckBbg: #ffefff;
 @blckCbg: #ffefff;
-@blckAClr: #000000;
-@blckBClr: #aa7700;
-@blckCClr: #aa7700;
+/*@blckAClr: #000000;*/
+@blckBClr: #aa8833;
+@blckCClr: #aa8833;
 
-@cmntClr: #3f3f3f;
-@cmntBg:  #fefefe;
+//@cmntClr: #3f3f3f;
+//@cmntBg:  #fefefe;
 
-@escapeClr: inherit;
+/*@escapeClr: inherit;*/
 @entityClr: #ba0043;
 
+@attrKey: #54a0ff;
+@attrValue: #8080ff;
+
+@commentClr: #888888;
+@commentBg:  #fefefe;
+
 .syntax--variable.syntax--attr.syntax--key.syntax--sxml {
-  color: blue;
+  color: @attrKey;
 }
 
 .syntax--punctuation.syntax--attr.syntax--sxml {
@@ -46,7 +52,31 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 }
 
 .syntax--variable.syntax--attr.syntax--value.syntax--sxml {
-  color: green;
+  color: @attrValue;
+}
+
+/* Comments */
+.syntax--comment.syntax--begin.syntax--sxml {
+  color: @commentClr;
+  font-style: normal;
+  font-weight: bold;
+  /*background-color: @commentBg;*/
+}
+
+/*
+.syntax--comment.syntax--firstletter.syntax--sxml {
+  color: @commentClr;
+  font-style: oblique;
+  text-transform: uppercase;
+  //background-color: @commentBg;
+}
+*/
+
+.syntax--comment.syntax--line.syntax--sxml {
+  color: @commentClr;
+  font-style: oblique;
+  text-transform: lowercase;
+  /*background-color: @commentBg;*/
 }
 
 /* All about blocks */
@@ -63,10 +93,10 @@ atom-text-editor.editor .syntax--source.syntax--sxml
   /*color: @escapeClr;*/
 }
 
-.syntax--comment.syntax--line.syntax--sxml {
-  color: @cmntClr;
-  /*background-color: @cmntBg;*/
-}
+//.syntax--comment.syntax--line.syntax--sxml {
+//  color: @cmntClr;
+//  /*background-color: @cmntBg;*/
+//}
 
 .syntax--variable.syntax--entity.syntax--sxml {
   color: @entityClr;
@@ -90,7 +120,7 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 
 .syntax--constant.syntax--blockA.syntax--sxml {
   /*background-color: @blckBbg;*/
-  color: @blckAClr;
+  /*color: @blckAClr;*/
 }
 
 .syntax--constant.syntax--blockB.syntax--sxml {

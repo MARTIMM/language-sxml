@@ -1,3 +1,4 @@
+# outside first element comment
 $test1 xmlns:abc=http://example.com/abc [
 
   $a $b $c
@@ -20,7 +21,7 @@ $test1 xmlns:abc=http://example.com/abc [
   $!mod1.meth1 a=b [ abc def ]
 
   $t7 [
-    # comments in block type A
+    # comments in block type
     $t7a [
       $other:sub [ elements ]
       $!mod2.meth2 {
@@ -34,6 +35,7 @@ $test1 xmlns:abc=http://example.com/abc [
   $t8 attr10=v10 =v20 =!v30 {
     # no comments in block type B
     $t8a [ no sub elements ]
+    $!abc.t8a [ no method elements ]
     vc \} abc ABC
     between text only brackets; an entity &circ; and another &copy;
   }
@@ -41,6 +43,7 @@ $test1 xmlns:abc=http://example.com/abc [
   $t9 «
     # no comments in block type C
     $t9a [ no sub elements ]
+    $!abc.t8a [ no method elements ]
     pqr \» tatar ata
     between text only brackets; an entity &circ; and another &copy;
   »
