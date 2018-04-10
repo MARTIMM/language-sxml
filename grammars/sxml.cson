@@ -193,7 +193,6 @@ repository:
   }
   escape: {
     comment: 'bolding of escaped characters'
-    match: '(\\\\).'
-    captures:
-      1: name: 'constant.character.escape.sxml'
+    match: '\\\\.'
+    name: 'constant.character.escape.sxml'
   }
