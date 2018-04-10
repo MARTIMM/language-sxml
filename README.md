@@ -1,6 +1,10 @@
 # Atom language for language Semi XML
 
-Highlighting the Semi-XML language from the perl6 module SemiXML found [here][repo]. At the moment a styles file is used which unfortunately will not work well with all themes but works on the light kind of themes in atom. In the near future I will try to make this better for all themes.
+Highlighting the Semi-XML language from the perl6 module SemiXML found [here][repo]. It seems acceptable in all themes.
+
+# Bugs
+* bracket matching seems confused when an escaped bracket is in the scope.
+
 
 <!-- references -->
 [repo]: https://github.com/MARTIMM/Semi-xml
