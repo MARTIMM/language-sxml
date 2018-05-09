@@ -3,14 +3,19 @@
     "source.sxml": [ "sxml", "semi-xml" ]
 
   editor:
-    foldBeginPattern: '("NEVERFOLD")'
-    foldEndPattern: '("NEVERFOLD")'
+    foldBeginPattern: '()'
+    foldEndPattern: '()'
     nonWordCharacters: '/\\()":,.;<>~#^*|+=[]{}`?!«»'
 
     # defined by bracket-matcher
-    increaseIndentPattern: '(?!<=\\\\)\\[|(?!<=\\\\)\\{|(?!<=\\\\)\\«'
-    decreaseIndentPattern: '(?!<=\\\\)\\]|(?!<=\\\\)\\}|(?!<=\\\\)\\»'
+    #increaseIndentPattern: '(?!<=\\\\)\\[|(?!<=\\\\)\\{|(?!<=\\\\)\\«'
+    #decreaseIndentPattern: '(?!<=\\\\)\\]|(?!<=\\\\)\\}|(?!<=\\\\)\\»'
+
+    #increaseIndentPattern: '^.*(\\{|\\[\\«)(\\}|\\]\\»)?\\s*$'
+    increaseIndentPattern: '(?!<=\\\\)[{«\\[]\\s$'
+    decreaseIndentPattern: '^\\s*(?!<=\\\\)[}»\\]]\\s*$'
 
   # defined by bracket-matcher
   "bracket-matcher":
-    autocompleteCharacters: [ "[]", "{}", "«»", "\"\"", "''", "<>"]
+    #autocompleteCharacters: [ "[]", "{}", "«»", "\"\"", "''", "<>"]
+    autocompleteCharacters: [ "[]", "{}", "«»"]

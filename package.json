@@ -1,6 +1,6 @@
 {
   "name": "language-sxml",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Semi-xml language support in the Atom editor",
   "engines": {
     "atom": "*"
