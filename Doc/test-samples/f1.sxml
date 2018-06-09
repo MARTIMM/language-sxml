@@ -1,4 +1,4 @@
-# outside first element comment
+# Outside first element comment
 $test1 xmlns:abc=http://example.com/abc [
 
   $a $b $c
