@@ -5,6 +5,11 @@ Highlighting the Semi-XML language from the perl6 module SemiXML found [here][re
 # Bugs
 * bracket matching seems confused when an escaped bracket is in the scope.
 
+# Changes
+* 0.2.3 changed coloring and element regex
+* 0.2.2 removed lowercasing of comments
+* ...
+* 0.0.1 Start of project
 
 <!-- references -->
 [repo]: https://github.com/MARTIMM/Semi-xml
