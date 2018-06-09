@@ -1,4 +1,5 @@
 
+/*
 atom-text-editor.editor .syntax--markup--syntax,
 atom-text-editor.editor .syntax--entity.syntax--name.syntax--section,
 atom-text-editor.editor .syntax--comment,
@@ -9,7 +10,7 @@ atom-text-editor.editor .syntax--source.syntax--sxml
   -webkit-font-feature-settings: "liga" off, "calt" off;
 }
 
-.editor, atom-text-editor::shadow {
+.editor, atom-text-editor {
   // defined by bracket-matcher
   .bracket-matcher {
     // style settings go here
@@ -20,6 +21,7 @@ atom-text-editor.editor .syntax--source.syntax--sxml
     background-color: rgba(0, 255, 0, 0.3);
   }
 }
+*/
 
 @elClr: #008ff0;
 @mmClr: #f08f00;
@@ -37,8 +39,8 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 /*@escapeClr: inherit;*/
 @entityClr: #ba0043;
 
-@attrKey: #54a0ff;
-@attrValue: #8080ff;
+@attrKey: #80afff;
+@attrValue: #4040af;
 
 @commentClr: #888888;
 @commentBg:  #fefefe;
@@ -75,8 +77,8 @@ atom-text-editor.editor .syntax--source.syntax--sxml
 .syntax--comment.syntax--line.syntax--sxml {
   color: @commentClr;
   font-style: oblique;
-  text-transform: lowercase;
-  /*background-color: @commentBg;*/
+  /*text-transform: lowercase;*/
+  background-color: @commentBg;
 }
 
 /* All about blocks */
