@@ -115,7 +115,7 @@ repository:
     comment: 'Element tags'
     patterns: [
       {
-        match: '(\\$)(([A-Za-z]\\w*)\\:)?([a-zA-Z]\\w*)'
+        match: '(\\$)(([A-Za-z_][\\w_-]*)\\:)?([a-zA-Z_][\\w_-]*)'
         captures:
           1: name: 'punctuation.element.begin.sxml'
           3: name: 'variable.namespace.sxml'
